@@ -1,0 +1,100 @@
+<!-- Theme JavaScript -->
+{{ $js := resources.Get "js/main.js" | resources.Minify }}
+<script src="{{ $js.Permalink }}"></script>
+
+<!-- Search functionality -->
+{{ if .Site.Params.search.enable }}
+<script>
+// Simple search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchToggle = document.getElementById('search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // Search data
+    let searchData = [];
+    
+    // Load search index
+    fetch('/index.json')
+        .then(response => response.json())
+        .then(data => {
+            searchData = data;
+        })
+        .catch(error => console.log('Search index not found'));
+
+    // Toggle search overlay
+    searchToggle?.addEventListener('click', () => {
+        searchOverlay.classList.add('active');
+        searchInput.focus();
+    });
+
+    searchClose?.addEventListener('click', () => {
+        searchOverlay.classList.remove('active');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        }
+    });
+
+    // Search functionality
+    searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query.length < 2) {
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(query) ||
+            item.content.toLowerCase().includes(query) ||
+            (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
+        ).slice(0, 10);
+
+        if (results.length > 0) {
+            searchResults.innerHTML = results.map(item => `
+                <div class="search-result">
+                    <h4><a href="${item.permalink}">${item.title}</a></h4>
+                    <p>${item.summary || item.content.substring(0, 150)}...</p>
+                    <div class="search-meta">
+                        <time>${new Date(item.date).toLocaleDateString()}</time>
+                        ${item.tags ? `<div class="tags">${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            searchResults.innerHTML = '<div class="no-results">{{ i18n "no_results_found" }}</div>';
+        }
+    });
+});
+</script>
+{{ end }}
+
+<!-- Analytics -->
+{{ if .Site.Params.googleAnalytics }}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ .Site.Params.googleAnalytics }}');
+</script>
+{{ end }}
+
+<!-- Custom JavaScript -->
+{{ if .Site.Params.customJS }}
+{{ range .Site.Params.customJS }}
+<script src="{{ . | relURL }}"></script>
+{{ end }}
+{{ end }}
+

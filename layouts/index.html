@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="home-container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="avatar">
+                {{ if .Site.Params.avatar }}
+                <img src="{{ .Site.Params.avatar }}" alt="{{ .Site.Title }}" class="avatar-img">
+                {{ end }}
+            </div>
+            <h1 class="hero-title">{{ .Site.Title }}</h1>
+            <p class="hero-subtitle">{{ .Site.Params.subtitle | default .Site.Params.description }}</p>
+            <div class="hero-tags">
+                {{ range .Site.Params.keywords }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts -->
+    <section class="latest-posts">
+        <h2 class="section-title">{{ i18n "latest_posts" }}</h2>
+        <div class="posts-grid">
+            {{ range first 6 (where .Site.RegularPages "Type" "posts") }}
+            <article class="post-card">
+                {{ if .Params.cover.image }}
+                <div class="post-image">
+                    <img src="{{ .Params.cover.image }}" alt="{{ .Params.cover.alt | default .Title }}">
+                </div>
+                {{ end }}
+                <div class="post-content">
+                    <h3 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p class="post-summary">{{ .Summary }}</p>
+                    <div class="post-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                        {{ if .Params.tags }}
+                        <div class="post-tags">
+                            {{ range first 3 .Params.tags }}
+                            <span class="tag">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        <div class="view-all">
+            <a href="/posts" class="btn btn-primary">{{ i18n "view_all_posts" }}</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2 class="section-title">{{ i18n "categories" }}</h2>
+        <div class="category-cloud">
+            {{ range .Site.Taxonomies.categories.ByCount }}
+            <a href="{{ .Page.Permalink }}" class="category-tag" style="font-size: {{ add 0.8 (mul (div .Count (len $.Site.Taxonomies.categories)) 1.2) }}rem;">
+                {{ .Page.Title }} ({{ .Count }})
+            </a>
+            {{ end }}
+        </div>
+    </section>
+</div>
+{{ end }}
+

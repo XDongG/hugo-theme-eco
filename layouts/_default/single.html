@@ -1,0 +1,111 @@
+{{ define "main" }}
+<article class="single-post">
+    <header class="post-header">
+        {{ if .Params.cover.image }}
+        <div class="post-cover">
+            <img src="{{ .Params.cover.image }}" alt="{{ .Params.cover.alt | default .Title }}">
+            {{ if .Params.cover.caption }}
+            <figcaption>{{ .Params.cover.caption }}</figcaption>
+            {{ end }}
+        </div>
+        {{ end }}
+        
+        <div class="post-header-info">
+            <h1 class="post-title">{{ .Title }}</h1>
+            
+            <div class="post-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                {{ if .Params.author }}
+                <span class="author">{{ i18n "by" }} {{ .Params.author }}</span>
+                {{ end }}
+                <span class="reading-time">{{ i18n "reading_time" }} {{ .ReadingTime }} {{ i18n "minutes" }}</span>
+                {{ if .Params.categories }}
+                <div class="post-categories">
+                    {{ range .Params.categories }}
+                    <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="category">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+            
+            {{ if .Description }}
+            <div class="post-description">{{ .Description }}</div>
+            {{ end }}
+        </div>
+    </header>
+
+    {{ if and .Params.showToc .TableOfContents }}
+    <div class="table-of-contents">
+        <h3>{{ i18n "table_of_contents" }}</h3>
+        {{ .TableOfContents }}
+    </div>
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+
+    <footer class="post-footer">
+        {{ if .Params.tags }}
+        <div class="post-tags">
+            <h4>{{ i18n "tags" }}:</h4>
+            {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="post-share">
+            <h4>{{ i18n "share_this_post" }}:</h4>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" target="_blank" class="share-btn twitter">Twitter</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook">Facebook</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" target="_blank" class="share-btn linkedin">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</article>
+
+<!-- Related Posts -->
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ if $related }}
+<section class="related-posts">
+    <h3>{{ i18n "related_posts" }}</h3>
+    <div class="related-grid">
+        {{ range $related }}
+        <article class="related-item">
+            {{ if .Params.cover.image }}
+            <div class="related-image">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ .Params.cover.image }}" alt="{{ .Title }}">
+                </a>
+            </div>
+            {{ end }}
+            <div class="related-content">
+                <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                <time>{{ .Date.Format "January 2, 2006" }}</time>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+<!-- Navigation -->
+<nav class="post-nav">
+    {{ if .PrevInSection }}
+    <a href="{{ .PrevInSection.Permalink }}" class="post-nav-prev">
+        <span class="nav-label">{{ i18n "previous_post" }}</span>
+        <span class="nav-title">{{ .PrevInSection.Title }}</span>
+    </a>
+    {{ end }}
+    
+    {{ if .NextInSection }}
+    <a href="{{ .NextInSection.Permalink }}" class="post-nav-next">
+        <span class="nav-label">{{ i18n "next_post" }}</span>
+        <span class="nav-title">{{ .NextInSection.Title }}</span>
+    </a>
+    {{ end }}
+</nav>
+{{ end }}
+

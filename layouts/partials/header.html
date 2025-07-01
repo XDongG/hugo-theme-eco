@@ -1,0 +1,104 @@
+<header class="site-header">
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo/Brand -->
+            <div class="nav-brand">
+                <a href="{{ .Site.BaseURL }}" class="brand-link">
+                    {{ if .Site.Params.logo }}
+                    <img src="{{ .Site.Params.logo }}" alt="{{ .Site.Title }}" class="brand-logo">
+                    {{ else }}
+                    <span class="brand-text">{{ .Site.Title }}</span>
+                    {{ end }}
+                </a>
+            </div>
+
+            <!-- Mobile menu toggle -->
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="{{ .Site.BaseURL }}" class="nav-link {{ if .IsHome }}active{{ end }}">
+                            <i class="fas fa-home"></i>
+                            <span>{{ i18n "home" }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "posts" | relURL }}" class="nav-link {{ if eq .Section "posts" }}active{{ end }}">
+                            <i class="fas fa-blog"></i>
+                            <span>{{ i18n "blog" }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "categories" | relURL }}" class="nav-link {{ if eq .Section "categories" }}active{{ end }}">
+                            <i class="fas fa-folder"></i>
+                            <span>{{ i18n "categories" }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "tags" | relURL }}" class="nav-link {{ if eq .Section "tags" }}active{{ end }}">
+                            <i class="fas fa-tags"></i>
+                            <span>{{ i18n "tags" }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "about" | relURL }}" class="nav-link {{ if eq .Section "about" }}active{{ end }}">
+                            <i class="fas fa-user"></i>
+                            <span>{{ i18n "about" }}</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Utilities -->
+                <div class="nav-utilities">
+                    <!-- Search -->
+                    <button class="utility-btn search-toggle" id="search-toggle" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Language Switcher -->
+                    {{ if .Site.IsMultiLingual }}
+                    <div class="language-switcher">
+                        <button class="utility-btn language-toggle" id="language-toggle" aria-label="Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <div class="language-menu" id="language-menu">
+                            {{ range .Site.Languages }}
+                            <a href="{{ if .IsMultiLingual }}{{ .Lang | relURL }}{{ else }}{{ .Site.BaseURL }}{{ end }}" 
+                               class="language-option {{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">
+                                {{ .LanguageName }}
+                            </a>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
+
+                    <!-- Dark Mode Toggle -->
+                    <button class="utility-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark-icon"></i>
+                        <i class="fas fa-sun light-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="{{ i18n "search_placeholder" }}" autocomplete="off">
+                <button class="search-close" id="search-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+</header>
+

@@ -1,0 +1,91 @@
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">{{ .Site.Title }}</h3>
+                <p class="footer-description">{{ .Site.Params.description }}</p>
+                
+                <!-- Social Links -->
+                {{ if .Site.Params.social }}
+                <div class="social-links">
+                    {{ range .Site.Params.social }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="social-link" title="{{ .name }}">
+                        <i class="{{ .icon }}"></i>
+                    </a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">{{ i18n "quick_links" }}</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ .Site.BaseURL }}">{{ i18n "home" }}</a></li>
+                    <li><a href="{{ "posts" | relURL }}">{{ i18n "blog" }}</a></li>
+                    <li><a href="{{ "categories" | relURL }}">{{ i18n "categories" }}</a></li>
+                    <li><a href="{{ "tags" | relURL }}">{{ i18n "tags" }}</a></li>
+                    <li><a href="{{ "about" | relURL }}">{{ i18n "about" }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">{{ i18n "categories" }}</h4>
+                <ul class="footer-links">
+                    {{ range first 5 .Site.Taxonomies.categories.ByCount }}
+                    <li>
+                        <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">{{ i18n "contact" }}</h4>
+                <div class="contact-info">
+                    {{ if .Site.Params.email }}
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+                    </div>
+                    {{ end }}
+                    {{ if .Site.Params.location }}
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ .Site.Params.location }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    <p>&copy; {{ now.Year }} {{ .Site.Title }}. {{ i18n "all_rights_reserved" }}</p>
+                    <p>{{ i18n "powered_by" }} <a href="https://gohugo.io" target="_blank">Hugo</a> & <a href="#" target="_blank">EcoTheme</a></p>
+                </div>
+                
+                <div class="footer-meta">
+                    <div class="eco-badge">
+                        <i class="fas fa-leaf"></i>
+                        <span>{{ i18n "eco_friendly" }}</span>
+                    </div>
+                    <div class="build-info">
+                        {{ i18n "last_updated" }}: {{ .Site.LastChange.Format "2006-01-02" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+</footer>
+

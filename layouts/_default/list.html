@@ -1,0 +1,66 @@
+{{ define "main" }}
+<div class="list-container">
+    <header class="list-header">
+        <h1 class="list-title">
+            {{ if .IsHome }}{{ .Site.Title }}
+            {{ else if eq .Kind "taxonomy" }}{{ i18n "posts_in" }} "{{ .Title }}"
+            {{ else if eq .Kind "term" }}{{ .Title }}
+            {{ else }}{{ .Title }}{{ end }}
+        </h1>
+        {{ if .Content }}
+        <div class="list-description">{{ .Content }}</div>
+        {{ end }}
+    </header>
+
+    <div class="posts-list">
+        {{ range .Paginator.Pages }}
+        <article class="post-item">
+            {{ if .Params.cover.image }}
+            <div class="post-thumbnail">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ .Params.cover.image }}" alt="{{ .Params.cover.alt | default .Title }}">
+                </a>
+            </div>
+            {{ end }}
+            <div class="post-info">
+                <h2 class="post-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                <div class="post-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                    {{ if .Params.author }}
+                    <span class="author">{{ i18n "by" }} {{ .Params.author }}</span>
+                    {{ end }}
+                    <span class="reading-time">{{ i18n "reading_time" }} {{ .ReadingTime }} {{ i18n "minutes" }}</span>
+                </div>
+                <p class="post-summary">{{ .Summary }}</p>
+                {{ if .Params.tags }}
+                <div class="post-tags">
+                    {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination">
+        {{ if .Paginator.HasPrev }}
+        <a href="{{ .Paginator.Prev.URL }}" class="pagination-prev">{{ i18n "previous" }}</a>
+        {{ end }}
+        
+        <span class="pagination-info">
+            {{ i18n "page" }} {{ .Paginator.PageNumber }} {{ i18n "of" }} {{ .Paginator.TotalPages }}
+        </span>
+        
+        {{ if .Paginator.HasNext }}
+        <a href="{{ .Paginator.Next.URL }}" class="pagination-next">{{ i18n "next" }}</a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</div>
+{{ end }}
+

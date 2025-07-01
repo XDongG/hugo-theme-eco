@@ -1,0 +1,143 @@
+{{ define "main" }}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-icon">
+            <i class="fas fa-leaf" style="font-size: 4rem; color: var(--color-primary); margin-bottom: 2rem;"></i>
+        </div>
+        
+        <h1 class="error-title">404</h1>
+        <h2 class="error-subtitle">{{ i18n "page_not_found" }}</h2>
+        <p class="error-message">{{ i18n "error_404_message" }}</p>
+        
+        <div class="error-actions">
+            <a href="{{ .Site.BaseURL }}" class="btn btn-primary">
+                <i class="fas fa-home"></i>
+                {{ i18n "go_home" }}
+            </a>
+            <button class="btn btn-secondary" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+                {{ i18n "previous" }}
+            </button>
+        </div>
+        
+        <!-- Popular Posts -->
+        <div class="popular-posts">
+            <h3>{{ i18n "latest_posts" }}</h3>
+            <div class="posts-list">
+                {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+                <article class="post-item-small">
+                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                    <time>{{ .Date.Format "2006-01-02" }}</time>
+                </article>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: var(--spacing-3xl) 0;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-title {
+    font-size: 6rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1;
+}
+
+.error-subtitle {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin: var(--spacing-lg) 0;
+}
+
+.error-message {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.error-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.popular-posts {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-2xl);
+    
+    h3 {
+        color: var(--color-primary);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .posts-list {
+        text-align: left;
+        
+        .post-item-small {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            h4 {
+                margin: 0;
+                font-size: var(--font-size-base);
+                
+                a {
+                    color: var(--color-text);
+                    text-decoration: none;
+                    
+                    &:hover {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+            
+            time {
+                font-size: var(--font-size-sm);
+                color: var(--color-text-muted);
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .error-title {
+        font-size: 4rem;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .popular-posts .post-item-small {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+}
+</style>
+{{ end }}
+

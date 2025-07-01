@@ -1,0 +1,171 @@
+{{ define "main" }}
+<div class="taxonomy-container">
+    <header class="taxonomy-header">
+        <h1 class="taxonomy-title">{{ i18n "tags" }}</h1>
+        <p class="taxonomy-description">{{ len .Site.Taxonomies.tags }} {{ i18n "tags" }}</p>
+    </header>
+
+    <div class="tags-cloud">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        <a href="{{ .Page.Permalink }}" class="tag-cloud-item" 
+           style="font-size: {{ add 0.8 (mul (div .Count (len $.Site.Taxonomies.tags)) 1.5) }}rem;">
+            {{ .Page.Title }}
+            <span class="tag-count">({{ .Count }})</span>
+        </a>
+        {{ end }}
+    </div>
+
+    <!-- Popular Tags -->
+    <section class="popular-tags">
+        <h2 class="section-title">{{ i18n "latest_posts" }}</h2>
+        <div class="tags-grid">
+            {{ range first 12 .Site.Taxonomies.tags.ByCount }}
+            <div class="tag-card">
+                <div class="tag-header">
+                    <h3 class="tag-name">
+                        <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+                    </h3>
+                    <span class="tag-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+                </div>
+                
+                <div class="tag-posts">
+                    {{ range first 3 .Pages }}
+                    <article class="tag-post">
+                        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                        <time>{{ .Date.Format "Jan 2" }}</time>
+                    </article>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </section>
+</div>
+
+<style>
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-3xl);
+    padding: var(--spacing-2xl);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--border-radius-xl);
+    
+    .tag-cloud-item {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius-xl);
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: var(--font-weight-medium);
+        transition: all var(--transition-fast);
+        
+        &:hover {
+            color: white;
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        
+        .tag-count {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+    }
+}
+
+.popular-tags {
+    .section-title {
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+    }
+}
+
+.tags-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tag-card {
+    @extend .card;
+    padding: var(--spacing-lg);
+    
+    .tag-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-md);
+        
+        .tag-name {
+            margin: 0;
+            font-size: var(--font-size-lg);
+            
+            a {
+                color: var(--color-primary);
+                text-decoration: none;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+        .tag-count {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            font-weight: var(--font-weight-medium);
+            white-space: nowrap;
+        }
+    }
+    
+    .tag-posts {
+        .tag-post {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            h4 {
+                margin: 0;
+                font-size: var(--font-size-sm);
+                flex: 1;
+                margin-right: var(--spacing-md);
+                
+                a {
+                    color: var(--color-text);
+                    text-decoration: none;
+                    
+                    &:hover {
+                        color: var(--color-primary);
+                    }
+                }
+            }
+            
+            time {
+                font-size: var(--font-size-xs);
+                color: var(--color-text-muted);
+                white-space: nowrap;
+            }
+        }
+    }
+}
+</style>
+{{ end }}
+

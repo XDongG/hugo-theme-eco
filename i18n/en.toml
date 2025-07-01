@@ -1,0 +1,71 @@
+# Navigation
+home = "Home"
+blog = "Blog"
+categories = "Categories"
+tags = "Tags"
+about = "About"
+
+# Search
+search_placeholder = "Search articles..."
+no_results_found = "No results found"
+
+# Posts
+latest_posts = "Latest Posts"
+view_all_posts = "View All Posts"
+related_posts = "Related Posts"
+previous_post = "Previous Post"
+next_post = "Next Post"
+reading_time = "Reading time"
+minutes = "minutes"
+by = "by"
+share_this_post = "Share this post"
+table_of_contents = "Table of Contents"
+
+# Pagination
+page = "Page"
+of = "of"
+previous = "Previous"
+next = "Next"
+
+# Post meta
+posts_in = "Posts in"
+all_rights_reserved = "All rights reserved"
+powered_by = "Powered by"
+last_updated = "Last updated"
+eco_friendly = "Eco-friendly"
+
+# Footer
+quick_links = "Quick Links"
+contact = "Contact"
+
+# Comments
+comments = "Comments"
+leave_comment = "Leave a Comment"
+name = "Name"
+email = "Email"
+website = "Website"
+comment = "Comment"
+submit = "Submit"
+
+# Forms
+required = "Required"
+optional = "Optional"
+send_message = "Send Message"
+message_sent = "Message sent successfully"
+message_error = "Failed to send message, please try again"
+
+# 404 page
+page_not_found = "Page Not Found"
+go_home = "Go Home"
+error_404_message = "Sorry, the page you are looking for does not exist."
+
+# Archive
+archive = "Archive"
+posts_count = "posts"
+year = "Year"
+month = "Month"
+
+# RSS
+subscribe_rss = "Subscribe RSS"
+feed = "Feed"
+

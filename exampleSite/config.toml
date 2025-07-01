@@ -1,0 +1,152 @@
+# hugo-theme-eco 示例配置文件
+# 复制此文件到你的 Hugo 站点根目录并重命名为 config.toml
+
+baseURL = "https://yoursite.com"
+languageCode = "zh-cn"
+title = "我的环保博客"
+theme = "hugo-theme-eco"
+
+# 启用多语言支持
+defaultContentLanguage = "zh-cn"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.zh-cn]
+    languageName = "中文"
+    weight = 1
+    title = "我的环保博客"
+    [languages.zh-cn.params]
+      subtitle = "专注节能减排与可持续发展"
+      description = "分享节能减排技术、环保理念和可持续发展实践"
+      keywords = ["节能减排", "环保", "可持续发展", "能源管理", "绿色技术"]
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "My Eco Blog"
+    [languages.en.params]
+      subtitle = "Focus on Energy Efficiency and Sustainability"
+      description = "Sharing energy efficiency technologies, environmental concepts and sustainable development practices"
+      keywords = ["energy efficiency", "environmental", "sustainability", "energy management", "green technology"]
+
+# 输出格式
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+# RSS 配置
+[params.rss]
+  fullText = true
+
+# 菜单配置
+[menu]
+  [[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "博客"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "分类"
+    url = "/categories/"
+    weight = 3
+  [[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 4
+  [[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 5
+
+# 主题参数
+[params]
+  # 基本信息
+  author = "你的名字"
+  subtitle = "专注节能减排与可持续发展"
+  description = "分享节能减排技术、环保理念和可持续发展实践"
+  keywords = ["节能减排", "环保", "可持续发展", "能源管理", "绿色技术"]
+  
+  # 头像和Logo
+  avatar = "/images/avatar.jpg"
+  logo = "/images/logo.png"
+  
+  # 联系信息
+  email = "your@email.com"
+  location = "中国"
+  
+  # 社交媒体链接
+  [[params.social]]
+    name = "GitHub"
+    icon = "fab fa-github"
+    url = "https://github.com/yourusername"
+  [[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter"
+    url = "https://twitter.com/yourusername"
+  [[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin"
+    url = "https://linkedin.com/in/yourusername"
+  [[params.social]]
+    name = "Email"
+    icon = "fas fa-envelope"
+    url = "mailto:your@email.com"
+
+  # 功能开关
+  [params.search]
+    enable = true
+  
+  [params.comments]
+    enable = false
+    # 如果启用评论，可以配置 Disqus 或其他评论系统
+    # disqus = "your-disqus-shortname"
+  
+  # SEO 和分析
+  googleAnalytics = "" # 你的 Google Analytics ID
+  
+  # 自定义 CSS 和 JS
+  customCSS = []
+  customJS = []
+  
+  # 默认图片
+  defaultImage = "/images/default-cover.jpg"
+
+# 分页设置
+paginate = 10
+paginatePath = "page"
+
+# 分类和标签
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# Markdown 设置
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+
+# 隐私设置
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    anonymizeIP = true
+    respectDoNotTrack = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+
+# 安全设置
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^CI$"]
+
