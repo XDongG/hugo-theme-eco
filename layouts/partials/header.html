@@ -22,36 +22,16 @@
             <!-- Navigation Menu -->
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
+                    {{range .Site.Menus.main}}
                     <li class="nav-item">
-                        <a href="{{ .Site.BaseURL }}" class="nav-link {{ if .IsHome }}active{{ end }}">
-                            <i class="fas fa-home"></i>
-                            <span>{{ i18n "home" }}</span>
+                        <a href="{{ .URL | relURL }}" class="nav-link {{ if or (eq .URL $.RelPermalink) (and $.IsHome (eq .URL "/")) }}active{{ end }}">
+                            {{if .Pre}}
+                                <i class={{.Pre}}></i>
+                            {{end}}
+                            <span>{{ i18n .Name }}</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ "posts" | relURL }}" class="nav-link {{ if eq .Section "posts" }}active{{ end }}">
-                            <i class="fas fa-blog"></i>
-                            <span>{{ i18n "blog" }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ "categories" | relURL }}" class="nav-link {{ if eq .Section "categories" }}active{{ end }}">
-                            <i class="fas fa-folder"></i>
-                            <span>{{ i18n "categories" }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ "tags" | relURL }}" class="nav-link {{ if eq .Section "tags" }}active{{ end }}">
-                            <i class="fas fa-tags"></i>
-                            <span>{{ i18n "tags" }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ "about" | relURL }}" class="nav-link {{ if eq .Section "about" }}active{{ end }}">
-                            <i class="fas fa-user"></i>
-                            <span>{{ i18n "about" }}</span>
-                        </a>
-                    </li>
+                    {{end}}
                 </ul>
 
                 <!-- Utilities -->
