@@ -66,7 +66,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <div class="copyright">
-                    <p>&copy; {{ now.Year }} {{ .Site.Title }}. {{ i18n "all_rights_reserved" }}</p>
+                    <p>&copy; {{ if and .Site.Params.startYear (lt (int .Site.Params.startYear) now.Year)}} {{ .Site.Params.startYear }} - {{else}} {{end}} {{ now.Year }} {{ .Site.Title }}. {{ i18n "all_rights_reserved" }}</p>
                     <p>{{ i18n "powered_by" }} <a href="https://gohugo.io" target="_blank">Hugo</a> & <a href="#" target="_blank">EcoTheme</a></p>
                 </div>
                 
