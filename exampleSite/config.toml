@@ -40,27 +40,76 @@ defaultContentLanguageInSubdir = false
   fullText = true
 
 # 菜单配置
-[menu]
-  [[menu.main]]
-    name = "首页"
-    url = "/"
+[languages]
+  [languages.zh-cn]
+    languageName = "中文"
     weight = 1
-  [[menu.main]]
-    name = "博客"
-    url = "/posts/"
+    title = "我的环保博客"
+    [languages.zh-cn.params]
+      subtitle = "专注节能减排与可持续发展"
+      description = "分享节能减排技术、环保理念和可持续发展实践"
+      keywords = ["节能减排", "环保", "可持续发展", "能源管理", "绿色技术"]
+    [languages.zh-cn.menu]
+      [[languages.zh-cn.menu.main]]
+        name = "首页"
+        url = "/"
+        weight = 1
+        pre = "fas fa-home"
+      [[languages.zh-cn.menu.main]]
+        name = "博客"
+        url = "/posts/"
+        weight = 2
+        pre = "fas fa-blog"
+      [[languages.zh-cn.menu.main]]
+        name = "分类"
+        url = "/categories/"
+        weight = 3
+        pre = "fas fa-folder"
+      [[languages.zh-cn.menu.main]]
+        name = "标签"
+        url = "/tags/"
+        weight = 4
+        pre = "fas fa-tags"
+      [[languages.zh-cn.menu.main]]
+        name = "关于"
+        url = "/about/"
+        weight = 5
+        pre = "fas fa-user"
+
+  [languages.en]
+    languageName = "English"
     weight = 2
-  [[menu.main]]
-    name = "分类"
-    url = "/categories/"
-    weight = 3
-  [[menu.main]]
-    name = "标签"
-    url = "/tags/"
-    weight = 4
-  [[menu.main]]
-    name = "关于"
-    url = "/about/"
-    weight = 5
+    title = "My Eco Blog"
+    [languages.en.params]
+      subtitle = "Focus on Energy Efficiency and Sustainability"
+      description = "Sharing energy efficiency technologies, environmental concepts and sustainable development practices"
+      keywords = ["energy efficiency", "environmental", "sustainability", "energy management", "green technology"]
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 1
+        pre = "fas fa-home"
+      [[languages.en.menu.main]]
+        name = "Blog"
+        url = "/posts/"
+        weight = 2
+        pre = "fas fa-blog"
+      [[languages.en.menu.main]]
+        name = "Categories"
+        url = "/categories/"
+        weight = 3
+        pre = "fas fa-folder"
+      [[languages.en.menu.main]]
+        name = "Tags"
+        url = "/tags/"
+        weight = 4
+        pre = "fas fa-tags"
+      [[languages.en.menu.main]]
+        name = "About"
+        url = "/about/"
+        weight = 5
+        pre = "fas fa-user"
 
 # 主题参数
 [params]
