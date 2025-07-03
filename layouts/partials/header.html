@@ -69,7 +69,7 @@
                         </button>
                         <div class="language-menu" id="language-menu">
                             {{ range .Site.Languages }}
-                            <a href="{{ if .IsMultiLingual }}{{ .Lang | relURL }}{{ else }}{{ .Site.BaseURL }}{{ end }}" 
+                            <a href="{{ .Lang | relURL }}" 
                                class="language-option {{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">
                                 {{ .LanguageName }}
                             </a>
