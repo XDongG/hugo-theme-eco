@@ -54,6 +54,7 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
+  --spacing-4xl: 5rem;
   
   // Layout
   --container-max-width: 1200px;
@@ -768,12 +769,12 @@ a {
 
 // ===== HOME PAGE =====
 .home-container {
-  padding: var(--spacing-xl) 0;
+  padding: 0 var(--spacing-xl) 0 0;
 }
 
 .hero {
   text-align: center;
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-4xl) 0;
   background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg) 100%);
   border-radius: var(--border-radius-xl);
   margin-bottom: var(--spacing-3xl);
@@ -844,7 +845,8 @@ a {
 }
 
 .latest-posts {
-  margin-bottom: var(--spacing-3xl);
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-3xl);
   
   .posts-grid {
     display: grid;
