@@ -975,7 +975,11 @@ a {
 }
 
 .posts-list {
+  max-width: 1200px;
+  margin: 0 auto;
   .post-item {
+    margin-left: 40px;
+    margin-right: 15px;
     display: flex;
     gap: var(--spacing-lg);
     padding: var(--spacing-xl) 0;

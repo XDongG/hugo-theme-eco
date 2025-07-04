@@ -21,30 +21,36 @@
     <!-- Latest Posts -->
     <section class="latest-posts">
         <h2 class="section-title">{{ i18n "latest_posts" }}</h2>
-        <div class="posts-grid">
-            {{ range first 6 (where .Site.RegularPages "Type" "posts") }}
-            <article class="post-card">
-                {{ if .Params.cover.image }}
-                <div class="post-image">
-                    <img src="{{ .Params.cover.image }}" alt="{{ .Params.cover.alt | default .Title }}">
-                </div>
-                {{ end }}
-                <div class="post-content">
+        <div class="posts-list">
+            {{ range first 10 (where .Site.RegularPages "Type" "posts") }}
+            <article class="post-item">
+                <div class="post-info">
                     <h3 class="post-title">
                         <a href="{{ .Permalink }}">{{ .Title }}</a>
                     </h3>
-                    <p class="post-summary">{{ .Summary }}</p>
                     <div class="post-meta">
-                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-                        {{ if .Params.tags }}
-                        <div class="post-tags">
-                            {{ range first 3 .Params.tags }}
-                            <span class="tag">{{ . }}</span>
-                            {{ end }}
-                        </div>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                        <span class="word-count">{{ .WordCount }} {{ i18n "words" }}</span>
+                        <span class="reading-time">{{ .ReadingTime }} {{ i18n "minutes" }} {{ i18n "read" }}</span>
+                    </div>
+                    {{ if .Summary }}
+                    <p class="post-summary">{{ .Summary }}</p>
+                    {{ end }}
+                    {{ if .Params.tags }}
+                    <div class="post-tags">
+                        {{ range first 3 .Params.tags }}
+                        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
                         {{ end }}
                     </div>
+                    {{ end }}
                 </div>
+                {{ if .Params.cover.image }}
+                <div class="post-thumbnail">
+                    <a href="{{ .Permalink }}">
+                        <img src="{{ .Params.cover.image }}" alt="{{ .Params.cover.alt | default .Title }}">
+                    </a>
+                </div>
+                {{ end }}
             </article>
             {{ end }}
         </div>
@@ -66,4 +72,3 @@
     </section>
 </div>
 {{ end }}
-
