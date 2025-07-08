@@ -91,6 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 {{ end }}
 
+<!-- Umami -->
+{{ if .Site.Params.umami }}
+<script async defer data-website-id="{{ .Site.Params.umami.websiteID }}" src="{{.Site.Params.umami.url}}"></script>
+{{ end }}
+
 <!-- Custom JavaScript -->
 {{ if .Site.Params.customJS }}
 {{ range .Site.Params.customJS }}
