@@ -1,5 +1,5 @@
 # hugo-theme-eco - Hugo生态环保主题 🌱
-[简体中文](README.zh-ch.md) | [English](README.md)
+[简体中文](README.zh-cn.md) | [English](README.md)
 
 hugo-theme-eco 是一个专为节能减排和环保行业专业人士设计的 Hugo 主题。它采用绿色环保的设计理念，支持亮暗模式切换和多语言，为环保博客提供优雅的展示平台。
 

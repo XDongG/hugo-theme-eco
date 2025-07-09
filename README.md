@@ -1,6 +1,6 @@
 #  Hugo-theme-eco  Theme 🌱
 
-[简体中文](README.zh-ch.md) | [English](README.md)
+[简体中文](README.zh-cn.md) | [English](README.md)
 
 Hugo-theme-eco is a Hugo theme specifically designed for energy conservation, emission reduction, and environmental protection professionals. It adopts a green and eco-friendly design philosophy, supports light/dark mode switching and multilingual capabilities, providing an elegant display platform for environmental blogs.
 
