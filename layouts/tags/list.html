@@ -1,8 +1,8 @@
 {{ define "main" }}
 <div class="taxonomy-container">
     <header class="taxonomy-header">
-        <h1 class="taxonomy-title">{{ i18n "tags" }}</h1>
-        <p class="taxonomy-description">{{ len .Site.Taxonomies.tags }} {{ i18n "tags" }}</p>
+        <h2 class="taxonomy-title">{{ i18n "tags" }}<sup class="tag-count">{{ len .Site.Taxonomies.tags }}</sup></h2>
+        <!-- <p class="taxonomy-description">{{ len .Site.Taxonomies.tags }} {{ i18n "tags" }}</p> -->
     </header>
 
     <div class="tags-cloud">
@@ -17,7 +17,7 @@
 
     <!-- Popular Tags -->
     <section class="popular-tags">
-        <h2 class="section-title">{{ i18n "latest_posts" }}</h2>
+        <!-- <h2 class="section-title">{{ i18n "latest_posts" }}</h2> -->
         <div class="tags-grid">
             {{ range first 12 .Site.Taxonomies.tags.ByCount }}
             <div class="tag-card">

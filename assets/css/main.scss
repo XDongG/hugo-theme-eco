@@ -1775,3 +1775,22 @@ a {
   }
 }
 
+// ===== TAGS_LIST =====
+.taxonomy-title {
+  color: var(--color-primary);
+  margin: var(--spacing-3xl);
+  text-align: center;
+  .tag-count {
+    font-size: 16px;
+    color: var(--color-warning)!important;
+  }
+}
+
+.tags-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
