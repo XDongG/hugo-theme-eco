@@ -1,141 +1,156 @@
-# hugo-theme-eco - Hugo生态环保主题 🌱
+#  Hugo-theme-eco  Theme 🌱
 
-hugo-theme-eco 是一个专为节能减排和环保行业专业人士设计的 Hugo 主题。它采用绿色环保的设计理念，支持亮暗模式切换和多语言，为环保博客提供优雅的展示平台。
+[简体中文](README.zh-ch.md) | [English](README.md)
 
-## ✨ 特性
+Hugo-theme-eco is a Hugo theme specifically designed for energy conservation, emission reduction, and environmental protection professionals. It adopts a green and eco-friendly design philosophy, supports light/dark mode switching and multilingual capabilities, providing an elegant display platform for environmental blogs.
 
-### 🎨 设计特色
-- **绿色环保风格**：以绿色为主色调，体现环保理念
-- **简洁高效**：界面简洁，体现节能减排的效率理念
-- **现代科技感**：融入现代科技元素，体现能源管理的专业性
-- **文艺气质**：优雅的排版和字体选择，适合文艺青年
+## ✨ Features
 
-### 🌓 亮暗模式
-- **自动切换**：支持系统主题自动切换
-- **手动控制**：提供主题切换按钮
-- **护眼设计**：暗色模式采用护眼配色
+### 🎨 Design Characteristics
 
-### 🌍 多语言支持
-- **中文简体**：完整的中文界面
-- **英文**：完整的英文界面
-- **易于扩展**：可轻松添加其他语言
+- **Eco-friendly Style**: Green as the main color tone, embodying environmental concepts
+- **Simple and Efficient**: Clean interface reflecting energy-saving efficiency principles
+- **Modern Tech Feel**: Incorporates modern technological elements, showcasing professionalism in energy management
+- **Artistic Touch**: Elegant typography and font choices suitable for artistic youth
 
-### 📱 响应式设计
-- **移动优先**：完美适配各种设备
-- **触摸友好**：移动端交互体验优化
-- **性能优化**：快速加载，节能环保
+### 🌓 Light/Dark Mode
 
-### 🔍 搜索功能
-- **实时搜索**：支持标题、内容、标签搜索
-- **搜索高亮**：搜索结果关键词高亮显示
-- **快捷操作**：键盘快捷键支持
+- **Auto-Switching**: Supports automatic system theme switching
+- **Manual Control**: Provides theme toggle button
+- **Eye Safe Design**: Dark mode uses eye-protective color scheme
 
-### 📊 SEO优化
-- **结构化数据**：完整的 JSON-LD 支持
-- **Open Graph**：社交媒体分享优化
-- **站点地图**：自动生成 sitemap
-- **RSS订阅**：支持全文RSS输出
+### 🌍 Multilingual Support
 
-## 🚀 快速开始
+- **Simplified Chinese**: Complete Chinese interface
+- **English**: Complete English interface
+- **Easy Expansion**: Can easily add other languages
 
-### 安装主题
+### 📱 Responsive Design
 
-#### 方法一：Git Submodule（推荐）
+- **Mobile-First**: Perfectly adapts to various devices
+- **Touch-Friendly**: Optimized mobile interaction experience
+- **Performance Optimized**: Fast loading, energy-saving and eco-friendly
+
+### 🔍 Search Functionality
+
+- **Real-time Search**: Supports title, content, and tag search
+- **Search Highlight**: Highlights keywords in search results
+- **Quick Operations**: Supports keyboard shortcuts
+
+### 📊 SEO Optimization
+
+- **Structured Data**: Complete JSON-LD support
+- **Open Graph**: Optimized for social media sharing
+- **Sitemap**: Automatically generated sitemap
+- **RSS Feed**: Supports full-text RSS output
+
+## 🚀 Quick Start
+
+### Install Theme
+
+#### Method 1: Git Submodule (Recommended)
+
 ```bash
 cd your-hugo-site
 git submodule add https://github.com/XDongG/hugo-theme-eco.git themes/hugo-theme-eco
 ```
 
-#### 方法二：直接下载
-```bash
+#### Method 2: Direct Download
+
+```Bash
 cd your-hugo-site/themes
 git clone https://github.com/XDongG/hugo-theme-eco.git
 ```
 
-### 配置站点
+### Configure Site
 
-1. 复制示例配置文件：
-```bash
+1. Copy example config file:
+
+```Bash
 cp themes/hugo-theme-eco/exampleSite/config.toml config.toml
 ```
 
-2. 编辑 `config.toml` 文件，修改基本信息：
+2. Edit `config.toml` file, modify basic information:
+
 ```toml
 baseURL = "https://yoursite.com"
-title = "你的博客标题"
+title = "Your Blog Title"
 theme = "hugo-theme-eco"
 
 [params]
-  author = "你的名字"
-  subtitle = "你的副标题"
-  description = "你的博客描述"
+  author = "Your Name"
+  subtitle = "Your Subtitle"
+  description = "Your Blog Description"
   email = "your@email.com"
 ```
 
-3. 创建内容：
-```bash
+3. Create content:
+
+```Bash
 hugo new posts/my-first-post.md
 ```
 
-4. 启动开发服务器：
+4. Start development server:
+
 ```bash
 hugo server -D
 ```
 
-## 📝 内容创建
+## 📝 Content Creation
 
-### 文章模板
-```yaml
+### Article Template
+
+```Yaml
 ---
-title: "文章标题"
+title: "Article Title"
 date: 2024-01-01T00:00:00+08:00
 draft: false
-description: "文章描述"
-tags: ["标签1", "标签2"]
-categories: ["分类"]
-author: "作者名"
+description: "Article Description"
+tags: ["Tag1", "Tag2"]
+categories: ["Category"]
+author: "Author Name"
 showToc: true
 TocOpen: false
 cover:
     image: "/images/cover.jpg"
-    alt: "封面图片描述"
-    caption: "封面图片说明"
+    alt: "Cover Image Description"
+    caption: "Cover Image Caption"
 ---
 ```
 
-### 页面类型
+### Page Types
 
-#### 普通页面
+#### Regular Page
 ```bash
 hugo new about/index.md
 ```
 
-#### 博客文章
+#### Blog Post
+
 ```bash
 hugo new posts/article-title.md
 ```
 
-## ⚙️ 配置选项
+## ⚙️ Configuration Options
 
-### 基本配置
+### Basic Configuration
 ```toml
 [params]
-  # 基本信息
-  author = "你的名字"
-  subtitle = "博客副标题"
-  description = "博客描述"
-  keywords = ["关键词1", "关键词2"]
+  # Basic Info
+  author = "Your Name"
+  subtitle = "Blog Subtitle"
+  description = "Blog Description"
+  keywords = ["Keyword1", "Keyword2"]
   
-  # 头像和Logo
+  # Avatar and Logo
   avatar = "/images/avatar.jpg"
   logo = "/images/logo.png"
   
-  # 联系信息
+  # Contact Info
   email = "your@email.com"
-  location = "你的位置"
+  location = "Your Location"
 ```
-
-### 社交媒体
+### Social Media
 ```toml
 [[params.social]]
   name = "GitHub"
@@ -147,8 +162,7 @@ hugo new posts/article-title.md
   icon = "fab fa-twitter"
   url = "https://twitter.com/XDongG"
 ```
-
-### 功能开关
+### Feature Toggles
 ```toml
 [params.search]
   enable = true
@@ -157,14 +171,13 @@ hugo new posts/article-title.md
   enable = false
   # disqus = "your-disqus-shortname"
 ```
-
-### 多语言配置
+### Multilingual Configuration
 ```toml
 [languages]
   [languages.zh-cn]
-    languageName = "中文"
+    languageName = "Chinese"
     weight = 1
-    title = "中文站点标题"
+    title = "Chinese Site Title"
     
   [languages.en]
     languageName = "English"
@@ -172,126 +185,125 @@ hugo new posts/article-title.md
     title = "English Site Title"
 ```
 
-## 🎨 自定义样式
+## 🎨 Custom Styling
 
-### 自定义CSS
+### Custom CSS
+
 ```toml
 [params]
   customCSS = ["/css/custom.css"]
 ```
 
-### 自定义JavaScript
+### Custom JavaScript
 ```toml
 [params]
   customJS = ["/js/custom.js"]
 ```
 
-### 颜色主题自定义
-在 `assets/css/custom.scss` 中覆盖CSS变量：
-```scss
+### Color Theme Customization
+Override CSS variables in `assets/css/custom.scss`:
+
+```Scss
 :root {
   --color-primary: #your-color;
   --color-accent: #your-accent-color;
 }
 ```
 
-## 📊 分析和SEO
+## 📊 Analytics and SEO
 
 ### Google Analytics
+
 ```toml
 [params]
   googleAnalytics = "GA-TRACKING-ID"
 ```
 
-### SEO优化
-- 自动生成 meta 标签
-- 结构化数据支持
-- Open Graph 和 Twitter Cards
-- 自动生成 sitemap.xml
-- RSS 订阅支持
+### SEO Optimization
+- Auto-generated meta tags
+- Structured data support
+- Open Graph and Twitter Cards
+- Auto-generated sitemap.xml
+- RSS feed support
 
-## 🔧 高级功能
+## 🔧 Advanced Features
+### Search Functionality
+Built-in JSON-based search supports:
+- Article title search
+- Full-text content search
+- Tag and category search
+- Real-time search results
 
-### 搜索功能
-主题内置了基于 JSON 的搜索功能，支持：
-- 文章标题搜索
-- 内容全文搜索
-- 标签和分类搜索
-- 实时搜索结果
+### Image Optimization
+- WebP format support
+- Responsive images
+- Lazy loading support
+- Image compression optimization
 
-### 图片优化
-- 支持 WebP 格式
-- 响应式图片
-- 懒加载支持
-- 图片压缩优化
+### Performance Optimization
+- CSS and JS compression
+- Resource caching optimization
+- Font preloading
+- Critical CSS inlining
 
-### 性能优化
-- CSS 和 JS 压缩
-- 资源缓存优化
-- 字体预加载
-- 关键CSS内联
+## 🛠️ Development Guide
 
-## 🛠️ 开发指南
-
-### 本地开发
+### Local Development
 ```bash
-# 克隆主题
+# Clone theme
 git clone https://github.com/XDongG/hugo-theme-eco.git
 cd hugo-theme-eco
 
-# 启动示例站点
+# Start example site
 cd exampleSite
 hugo server -D --themesDir ../..
 ```
 
-### 文件结构
+### File Structure
 ```
-hugo-theme-eco/
-├── archetypes/          # 内容模板
-├── assets/             # 资源文件
-│   ├── css/           # 样式文件
-│   └── js/            # JavaScript文件
-├── layouts/            # 布局模板
-│   ├── _default/      # 默认布局
-│   ├── partials/      # 部分模板
-│   └── shortcodes/    # 短代码
-├── static/             # 静态文件
-├── i18n/              # 多语言文件
-├── data/              # 数据文件
-└── exampleSite/       # 示例站点
+ hugo-theme-eco/
+├── archetypes/          # Content templates
+├── assets/             # Asset files
+│   ├── css/           # Style files
+│   └── js/            # JavaScript files
+├── layouts/            # Layout templates
+│   ├── _default/      # Default layouts
+│   ├── partials/      # Partial templates
+│   └── shortcodes/    # Shortcodes
+├── static/             # Static files
+├── i18n/              # Multilingual files
+├── data/              # Data files
+└── exampleSite/       # Example site
 ```
 
-## 🤝 贡献
+## 🤝 Contribution
 
-欢迎贡献代码和建议！
+Welcome code contributions and suggestions!
 
-1. Fork 这个仓库
-2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的修改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开一个 Pull Request
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/XDongG/hugo-theme-eco/blob/master/LICENSE) file for details.
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [Hugo](https://gohugo.io/) - 静态网站生成器
-- [Font Awesome](https://fontawesome.com/) - 图标库
-- [Google Fonts](https://fonts.google.com/) - 网络字体
+- [Hugo](https://gohugo.io/) - Static site generator
+- [Font Awesome](https://fontawesome.com/) - Icon library
+- [Google Fonts](https://fonts.google.com/) - Web fonts
 
-## 📞 支持
+## 📞 Support
 
-如果你在使用过程中遇到问题，可以：
+If you encounter issues during use, you can:
 
-- 查看 [Wiki](https://github.com/XDongG/hugo-theme-eco/wiki)
-- 提交 [Issue](https://github.com/XDongG/hugo-theme-eco/issues)
-- 发送邮件到 your@email.com
+- Check the [Wiki](https://github.com/XDongG/hugo-theme-eco/wiki)
+- Submit an [Issue](https://github.com/XDongG/hugo-theme-eco/issues)
+- Email to [xdguo2008@gmail.com](mailto:xdguo2008@gmail.com)
 
----
+**Let's work together to create a better environment!** 🌱
 
-**让我们一起为创造更美好的环境而努力！** 🌱
-
-如果这个主题对你有帮助，请给个 ⭐️ 支持一下！
-
+If this theme helps you, please give it a ⭐️ for support!
