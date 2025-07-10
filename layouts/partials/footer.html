@@ -22,11 +22,14 @@
             <div class="footer-section">
                 <h4 class="footer-subtitle">{{ i18n "quick_links" }}</h4>
                 <ul class="footer-links">
-                    <li><a href="{{ .Site.BaseURL }}">{{ i18n "home" }}</a></li>
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL }}">{{ i18n .Name }}</a></li>
+                    {{ end }}
+                    <!-- <li><a href="{{ .Site.BaseURL }}">{{ i18n "home" }}</a></li>
                     <li><a href="{{ "posts" | relURL }}">{{ i18n "blog" }}</a></li>
                     <li><a href="{{ "categories" | relURL }}">{{ i18n "categories" }}</a></li>
                     <li><a href="{{ "tags" | relURL }}">{{ i18n "tags" }}</a></li>
-                    <li><a href="{{ "about" | relURL }}">{{ i18n "about" }}</a></li>
+                    <li><a href="{{ "about" | relURL }}">{{ i18n "about" }}</a></li> -->
                 </ul>
             </div>
 
