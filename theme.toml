@@ -6,6 +6,7 @@ homepage = "https://github.com/XDongG/hugo-theme-eco"
 tags = ["blog", "clean", "eco", "green", "responsive", "dark-mode", "multilingual"]
 features = ["blog", "responsive", "dark-mode", "multilingual", "i18n"]
 min_version = "0.128.0"
+max_version = "1.145.0"
 
 [author]
   name = "Your Name"
