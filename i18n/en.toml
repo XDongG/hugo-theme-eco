@@ -69,3 +69,5 @@ month = "Month"
 subscribe_rss = "Subscribe RSS"
 feed = "Feed"
 
+[date]
+  format = "January 01, 2006"

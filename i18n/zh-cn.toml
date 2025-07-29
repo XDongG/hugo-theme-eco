@@ -70,3 +70,5 @@ month = "月"
 subscribe_rss = "订阅RSS"
 feed = "订阅源"
 
+[date]
+  format = "2006年01月02日"
