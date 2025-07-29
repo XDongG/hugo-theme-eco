@@ -31,8 +31,8 @@
                 <div class="tag-posts">
                     {{ range first 3 .Pages }}
                     <article class="tag-post">
-                        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                        <time>{{ .Date.Format "Jan 2" }}</time>
+                        <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+                        <time>{{ .Date.Format "01-02" }}</time>
                     </article>
                     {{ end }}
                 </div>
