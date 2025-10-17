@@ -377,7 +377,7 @@ a {
   }
   
   .brand-logo {
-    height: 40px;
+    height: 60px;
     width: auto;
     margin-right: var(--spacing-sm);
   }
@@ -385,12 +385,7 @@ a {
   .brand-text {
     display: flex;
     align-items: center;
-    
-    &::before {
-      content: "🌱";
-      margin-right: var(--spacing-xs);
-      font-size: var(--font-size-lg);
-    }
+    /* 删除了emoji伪元素 */
   }
 }
 
